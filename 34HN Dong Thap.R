@@ -13,8 +13,8 @@ options(encoding = 'UTF-8')
 ########## Dong Thap##############
 ###--------Interpreting data from 2017-2021-------
 #2017
-data2017<-data2017 %>% dplyr::rename(specimen=11, organism=13) %>% mutate(specimen=recode(specimen,"ur"="urin"))
-table(data2017$specimen)
+data2017<-read_excel("~/Vi sinh/34HN Dong Thap/34HN_SS1_BVDK Dong Thap_Vi sinh_2017_31032021.xlsx", guess_max = 99999)  %>% 
+  mutate(SPEC_TYPE= recode(SPEC_TYPE,"ur"="urin")) 
 data2017[, 20:56] <- lapply(data2017[, 20:56], as.disk) #delete 3 values 66,69,S
 
 data2017_combine<-cbind(data2017[,c(11,13)], data2017[,c(20:56)])
@@ -29,8 +29,6 @@ data_interpret_2017<-data_interpret_2017 %>% add_column(STT=NA, COUNTRY=NA, ORIG
                                                         DEPARTMENT=NA, WARD_TYPE=NA, SPEC_CODE=NA, SPEC_REAS=NA,INDUC_CLI=NA, 
                                                         COMMENT=NA, DATE_DATA=NA)
 
-names(data_interpret_2017)[11]<-"SPEC_TYPE"
-names(data_interpret_2017)[13]<-"ORGANISM"
 data_interpret_2017<-data_interpret_2017 %>% select(STT, COUNTRY, LABORATORY, ORIGIN, PATIENT_ID, LAST_NAME, FIRST_NAME, 
                                                     SEX, DATE_BIRTH, AGE, PAT_TYPE, WARD, INSTITUTE, DEPARTMENT, WARD_TYPE,
                                                     DATE_ADMIS, SPEC_NUM, SPEC_DATE, SPEC_TYPE, SPEC_CODE, SPEC_REAS, 
@@ -44,8 +42,8 @@ saveRDS(data_interpret_2017, "data_interpret_2017.Rds")
 
 
 #2018
-data2018<-data2018 %>% dplyr::rename(specimen=11, organism=13) %>% mutate(specimen=recode(specimen,"ur"="urin"))
-table(data2018$specimen)
+data2018<-read_excel("~/Vi sinh/34HN Dong Thap/34HN_SS1_BVDK Dong Thap_Vi sinh_2018_01042021.xlsx", guess_max = 99999) %>% 
+  mutate(SPEC_TYPE=recode(SPEC_TYPE,"ur"="urin"))
 
 data2018[,c(20:78)][is.na(data2018[,c(20:78)])]<-"" 
 data2018[, c(20:78)] <- lapply(data2018[, c(20:78)], as.numeric)
@@ -66,8 +64,6 @@ data_interpret_2018<-data_interpret_2018 %>% add_column(STT=NA, COUNTRY=NA, ORIG
                                                         DEPARTMENT=NA, WARD_TYPE=NA, SPEC_CODE=NA, SPEC_REAS=NA,INDUC_CLI=NA, 
                                                         COMMENT=NA, DATE_DATA=NA)
 
-names(data_interpret_2018)[11]<-"SPEC_TYPE"
-names(data_interpret_2018)[13]<-"ORGANISM"
 data_interpret_2018<-data_interpret_2018 %>% select(STT, COUNTRY, LABORATORY, ORIGIN, PATIENT_ID, LAST_NAME, FIRST_NAME, 
                                                     SEX, DATE_BIRTH, AGE, PAT_TYPE, WARD, INSTITUTE, DEPARTMENT, WARD_TYPE,
                                                     DATE_ADMIS, SPEC_NUM, SPEC_DATE, SPEC_TYPE, SPEC_CODE, SPEC_REAS, 
@@ -87,7 +83,8 @@ saveRDS(data_interpret_2018, "data_interpret_2018.Rds")
 
 
 #2019
-data2019<-data2019 %>% dplyr::rename(specimen=11, organism=13) %>% mutate(specimen=recode(specimen,"ur"="urin"))
+data2019<-read_excel("~/Vi sinh/34HN Dong Thap/34HN_SS1_BVDK Dong Thap_Vi sinh_2019_01042021.xlsx", guess_max = 99999) %>% 
+  mutate(SPEC_TYPE=recode(SPEC_TYPE,"ur"="urin"))
 table(data2019$specimen)
 data2019[, 20:54] <- lapply(data2019[, 20:54], as.disk)  #delete 2 "I"
 
@@ -103,8 +100,6 @@ data_interpret_2019<-data_interpret_2019 %>% add_column(STT=NA, COUNTRY=NA, ORIG
                                                         DEPARTMENT=NA, WARD_TYPE=NA, SPEC_CODE=NA, SPEC_REAS=NA,INDUC_CLI=NA, 
                                                         COMMENT=NA, DATE_DATA=NA)
 
-names(data_interpret_2019)[11]<-"SPEC_TYPE"
-names(data_interpret_2019)[13]<-"ORGANISM"
 data_interpret_2019<-data_interpret_2019 %>% select(STT, COUNTRY, LABORATORY, ORIGIN, PATIENT_ID, LAST_NAME, FIRST_NAME, 
                                                     SEX, DATE_BIRTH, AGE, PAT_TYPE, WARD, INSTITUTE, DEPARTMENT, WARD_TYPE,
                                                     DATE_ADMIS, SPEC_NUM, SPEC_DATE, SPEC_TYPE, SPEC_CODE, SPEC_REAS, 
@@ -118,8 +113,8 @@ saveRDS(data_interpret_2019, "data_interpret_2019.Rds")
 
 
 #2020
-data2020<-data2020 %>% dplyr::rename(specimen=11, organism=13) %>% mutate(specimen=recode(specimen,"ur"="urin"))
-table(data2020$specimen)
+data2020<-read_excel("~/Vi sinh/34HN Dong Thap/34HN_SS1_BVDK Dong Thap_Vi sinh_2020_02042021.xlsx", guess_max = 99999) %>% 
+  mutate(SPEC_TYPE=recode(SPEC_TYPE,"ur"="urin"))
 
 data2020[,c(20:56)][is.na(data2020[,c(20:56)])]<-"" 
 data2020[, c(20:56)] <- lapply(data2020[, c(20:56)], as.numeric)
@@ -140,8 +135,6 @@ data_interpret_2020<-data_interpret_2020 %>% add_column(STT=NA, COUNTRY=NA, ORIG
                                                         DEPARTMENT=NA, WARD_TYPE=NA, SPEC_CODE=NA, SPEC_REAS=NA,INDUC_CLI=NA, 
                                                         COMMENT=NA, DATE_DATA=NA)
 
-names(data_interpret_2020)[11]<-"SPEC_TYPE"
-names(data_interpret_2020)[13]<-"ORGANISM"
 data_interpret_2020<-data_interpret_2020 %>% select(STT, COUNTRY, LABORATORY, ORIGIN, PATIENT_ID, LAST_NAME, FIRST_NAME, 
                                                     SEX, DATE_BIRTH, AGE, PAT_TYPE, WARD, INSTITUTE, DEPARTMENT, WARD_TYPE,
                                                     DATE_ADMIS, SPEC_NUM, SPEC_DATE, SPEC_TYPE, SPEC_CODE, SPEC_REAS, 
@@ -157,8 +150,8 @@ saveRDS(data_interpret_2020, "data_interpret_2020.Rds")
 
 
 #2021
-data2021<-data2021 %>% dplyr::rename(specimen=18, organism=22) %>% mutate(specimen=recode(specimen,"ur"="urin"))
-table(data2021$specimen)
+data2021<-read_excel("~/Vi sinh/34HN Dong Thap/34HN_SS1_BVDK Dong Thap_Vi sinh_2021_01072022.xlsx", guess_max = 99999) %>%
+  mutate(SPEC_TYPE=recode(SPEC_TYPE,"ur"="urin"))
 
 data2021[,c(32:123)][is.na(data2021[,c(32:123)])]<-"" 
 data2021[, c(32:123)] <- lapply(data2021[, c(32:123)], as.numeric)
@@ -173,8 +166,6 @@ data2021_combine<-as.rsi(data2021_combine, guideline = "CLSI", uti=NULL,
 
 data_interpret_2021<-cbind(data2021[,c(1:31)], data2021_combine[,c(3:94)])
 data_interpret_2021<-data_interpret_2021 %>% add_column(STT=NA)
-names(data_interpret_2021)[18]<-"SPEC_TYPE"
-names(data_interpret_2021)[22]<-"ORGANISM"
 names(data_interpret_2021)[1]<-"COUNTRY"
 names(data_interpret_2021)[12]<-"INSTITUTE"
 
